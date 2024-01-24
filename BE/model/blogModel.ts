@@ -1,4 +1,5 @@
 import { Document, Schema, Types, model } from "mongoose";
+import { CAT } from "../utils/categories";
 
 interface iBlog {
   title: string;
@@ -24,6 +25,7 @@ const blogModel = new Schema<iBlogData>(
     },
     category: {
       type: String,
+      default: CAT.General,
     },
     content: {
       type: String,
