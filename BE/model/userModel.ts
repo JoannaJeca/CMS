@@ -10,6 +10,9 @@ interface iUser {
   avatar: string;
   avatarID: string;
 
+  token: string;
+  verified: boolean;
+
   blogs: Array<{}>;
 }
 
@@ -40,6 +43,13 @@ const userModel = new Schema<iUserData>(
       type: String,
     },
     avatarID: {
+      type: String,
+    },
+    verified: {
+      type: Boolean,
+      default: false,
+    },
+    token: {
       type: String,
     },
     blogs: [
