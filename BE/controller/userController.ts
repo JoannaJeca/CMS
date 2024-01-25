@@ -130,10 +130,9 @@ export const loginUser = async (
   res: Response
 ): Promise<Response> => {
   try {
-    const { userID } = req.params;
     const { email, password } = req.body;
 
-    const user: any = await userModel.findById(userID);
+    const user: any = await userModel.findOne({ email });
 
     const decrypt = await bcrypt.compare(password, user?.password);
 
