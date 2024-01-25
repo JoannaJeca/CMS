@@ -65,7 +65,7 @@ const Register = () => {
             >
               Already have an account?{" "}
               <NavLink
-                to="/login"
+                to="/register"
                 className="text-blue-600 hover:underline dark:text-blue-500"
               >
                 Login
