@@ -3,6 +3,7 @@ import userModel from "../model/userModel";
 import bcrypt from "bcrypt";
 import { randomBytes } from "crypto";
 import jwt from "jsonwebtoken";
+import { verifiedEmail } from "../utils/email";
 
 export const createUser = async (
   req: Request,
@@ -17,6 +18,8 @@ export const createUser = async (
     const token = randomBytes(3).toString("hex");
 
     const user = await userModel.create({ email, password: hashed, token });
+
+    verifiedEmail(user);
 
     return res.status(201).json({
       msg: "User created successfully",
