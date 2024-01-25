@@ -3,6 +3,9 @@ import { FaBell } from "react-icons/fa";
 import { FaEllipsis } from "react-icons/fa6";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { createBlog } from "../../../APIs/blogAPI";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Quill = () => {
   let toolbarOptions = [
@@ -28,13 +31,27 @@ const Quill = () => {
     toolbar: toolbarOptions,
   };
 
+  const ID: any = useSelector((state: any) => state.ID);
+
+  const navigate = useNavigate();
+
   return (
     <div className="w-full flex items-center flex-col">
       <div className="w-[60%]">
         <div className="h-[70px] flex w-full items-center justify-between text-[15px]">
           <div className="w-1/2 ">Rufai Ahmed</div>
           <div className=" flex items-center gap-4">
-            <div className="p-3 text-sm bg-emerald-500 text-white rounded-[40px] py-2">
+            <div
+              onClick={() => {
+                createBlog(
+                  { title, content: value, category: "general" },
+                  ID
+                ).then((res) => {
+                  navigate("/");
+                });
+              }}
+              className="p-3 cursor-pointer text-sm bg-emerald-500 text-white rounded-[40px] py-2"
+            >
               Publish
             </div>
 

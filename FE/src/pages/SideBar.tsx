@@ -6,10 +6,14 @@ import { CiRead } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa";
 // import { FaAngleUp } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutState } from "../global/reduxState";
 // import { useState } from "react";
 
 const SideBar = () => {
   // const [show, setShow] = useState();
+
+  const dispatch = useDispatch();
 
   return (
     <div className="w-[100%] h-[100vh] flex justify-center items-center">
@@ -77,7 +81,12 @@ const SideBar = () => {
             Most Read
           </NavLink>
         </div>
-        <div className="w-[200px] h-[50px] border-2 rounded-[20px] mx-2 border-slate-800 flex items-center px-2 ">
+        <div
+          className="w-[200px] h-[50px] border-2 rounded-[20px] mx-2 border-slate-800 flex items-center px-2 "
+          onClick={() => {
+            dispatch(logoutState());
+          }}
+        >
           <div className="w-[30px] h-[30px]  bg-slate-800 rounded-[50%] flex justify-center items-center text-white font-bold text-[20px] mr-2 ">
             <CiLogin />
           </div>

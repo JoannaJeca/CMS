@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL: string = "https://cms-5zqp.onrender.com";
+const URL: string = "https://cms-5zqp.onrender.com/api";
 
 export const createUser = async (data: {}) => {
   try {
@@ -46,9 +46,9 @@ export const viewOneUser = async (ID: string) => {
   }
 };
 
-export const loginUser = async (ID: string) => {
+export const loginUser = async (data: {}) => {
   try {
-    return await axios.get(`${URL}/login-user/${ID}`).then((res) => {
+    return await axios.patch(`${URL}/login-user`, data).then((res) => {
       return res.data;
     });
   } catch (error) {
