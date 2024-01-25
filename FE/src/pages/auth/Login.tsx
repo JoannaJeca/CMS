@@ -52,7 +52,7 @@ const Login = () => {
             >
               Don't have an account?{" "}
               <NavLink
-                to="/login"
+                to="/auth/login"
                 className="text-blue-600 hover:underline dark:text-blue-500"
               >
                 Sign Up
