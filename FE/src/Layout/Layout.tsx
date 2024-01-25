@@ -4,14 +4,20 @@ import HeadBlog from "../pages/home/Blog/HeadBlog";
 
 const Layout = () => {
   return (
-    <div className="flex justify-center items-center">
-      <SideBar />
-      <div className="w-[80%]">
-        <HeadBlog />
+    <div className="flex w-full justify-end">
+      <div className=" fixed top-0 left-0 w-[250px]">
+        <SideBar />
+      </div>
+      <div className="flex justify-center">
+        <div className="w-[100%]">
+          <div className="flex justify-center w-full fixed  left-24 ">
+            <HeadBlog />
+          </div>
 
-        <div className="mb-20" />
+          <div className="mb-20" />
 
-        <Outlet />
+          <Outlet />
+        </div>
       </div>
     </div>
   );

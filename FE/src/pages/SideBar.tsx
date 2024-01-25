@@ -4,15 +4,15 @@ import { BiSolidCategoryAlt } from "react-icons/bi";
 import { MdHome } from "react-icons/md";
 import { CiRead } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa";
-import { FaAngleUp } from "react-icons/fa";
+// import { FaAngleUp } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 
 const SideBar = () => {
-  const [show, setShow] = useState();
+  // const [show, setShow] = useState();
 
   return (
-    <div className="w-[20%] h-[100vh] flex justify-center items-center">
+    <div className="w-[100%] h-[100vh] flex justify-center items-center">
       <div className="bg-white flex justify-around items-center flex-col rounded-md h-[95%] w-[90%] shadow-xl ">
         <div className="w-[200px] h-[50px] border-2 rounded-[20px] mx-2 border-slate-800 flex items-center px-2 ">
           <div className="w-[30px] h-[30px] bg-slate-800 rounded-[50%] flex justify-center items-center text-white font-bold text-[20px] mr-2 ">

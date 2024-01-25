@@ -1,5 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import { FaPenClip } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 const HeadBlog = () => {
   return (
@@ -22,11 +23,14 @@ const HeadBlog = () => {
         />
 
         <div className="w-1/2 pr-4 flex justify-end items-center">
-          <div className="flex gap-3 items-center cursor-pointer">
+          <NavLink
+            to="/blogs/write"
+            className="flex gap-3 items-center cursor-pointer"
+          >
             <FaPenClip />
 
             <div>Write</div>
-          </div>
+          </NavLink>
         </div>
       </div>
     </div>

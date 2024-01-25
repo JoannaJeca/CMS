@@ -5,10 +5,10 @@ import Verify from "../pages/auth/Verify";
 import Login from "../pages/auth/Login";
 import AuthLayout from "../Layout/AuthLayout";
 import HomeScreen from "../pages/home/HomeScreen";
-import Blogs from "../pages/home/Blogs";
 import Category from "../pages/home/Category";
 import MostRead from "../pages/home/MostRead";
 import Quill from "../pages/home/Blog/Quill";
+import Blogs from "../pages/home/Blog/Blogs";
 
 export const mainRouter = createBrowserRouter([
   {
