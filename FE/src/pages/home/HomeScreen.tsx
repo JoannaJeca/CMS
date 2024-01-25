@@ -1,3 +1,4 @@
+
 import Carddesign from "../Carddesign";
 import { FaShare } from "react-icons/fa";
 import { BiMessageDetail } from "react-icons/bi";
@@ -138,7 +139,6 @@ const HomeScreen = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

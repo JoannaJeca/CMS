@@ -10,6 +10,17 @@ const HeadBlog = () => {
             <FaPenClip />
 
             <div>Write</div>
+            <div className="bg-red-100 mr-3 relative group">
+              <div className="w-[60px] h-[60px] rounded-full border flex justify-center items-center bg-red-200 cursor-pointer">
+                <img
+                  src={pix}
+                  style={{ width: "100%", borderRadius: "100%" }}
+                />
+              </div>
+              <div className="w-[120px] h-[50px] text-[10px] font-thin bg-white absolute right-2 rounded-sm flex opacity-0 text-center group-hover:opacity-100 transition-all duration-300 items-center">
+                Please complete your profile if not done
+              </div>
+            </div>
           </div>
         </div>
       </div>
