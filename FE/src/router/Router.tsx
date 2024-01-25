@@ -8,6 +8,8 @@ import HomeScreen from "../pages/home/HomeScreen";
 import Blogs from "../pages/home/Blogs";
 import Category from "../pages/home/Category";
 import MostRead from "../pages/home/MostRead";
+import Blogs from "../pages/home/Blog/Blogs";
+import Quill from "../pages/home/Blog/Quill";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -49,5 +51,9 @@ export const mainRouter = createBrowserRouter([
         element: <Login />,
       },
     ],
+  },
+  {
+    path: "/blogs/write",
+    element: <Quill />,
   },
 ]);
