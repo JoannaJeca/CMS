@@ -1,4 +1,5 @@
 import { FaBookOpen, FaPenClip } from "react-icons/fa6";
+import pix from "../../Assets/IMG_20210508_220841_304.jpg";
 
 const HeadBlog = () => {
   return (
