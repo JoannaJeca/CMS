@@ -1,4 +1,3 @@
-
 import Carddesign from "../Carddesign";
 import { FaShare } from "react-icons/fa";
 import { BiMessageDetail } from "react-icons/bi";
@@ -14,8 +13,8 @@ const HomeScreen = () => {
   return (
     <div>
       <div className=" w-full h-screen flex justify-center items-center   p-3">
-        <div className=" w-[90%] h-[100%] p-3 ">
-          <div className=" h-[100%] w-[100%]  flex items-center  gap-5 flex-wrap justify-center">
+        <div className=" w-[100%] h-[100%] p-3 ">
+          <div className=" h-[100%] w-[100%] justify-center grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
             <Carddesign
               icon={<MdOutlineSettingsInputComposite />}
               Text="Python Pentration Testing: Gathering HTTPS Keys in chrome"
@@ -139,7 +138,7 @@ const HomeScreen = () => {
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
