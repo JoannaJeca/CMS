@@ -11,7 +11,7 @@ export const createBlog = async (req: Request, res: Response) => {
 
     const user = await userModel.findById(userID);
 
-    const { secure_url, public_id }: any = await stream(req);
+    // const { secure_url, public_id }: any = await stream(req);
 
     if (user && user.verified) {
       const blog = await blogModel.create({
@@ -19,8 +19,8 @@ export const createBlog = async (req: Request, res: Response) => {
         title,
         content,
         category,
-        displayImage: secure_url,
-        displayImageID: public_id,
+        displayImage: "secure_url",
+        displayImageID: " public_id",
       });
 
       user.blogs.push(new Types.ObjectId(blog._id));
