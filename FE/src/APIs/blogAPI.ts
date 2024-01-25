@@ -19,9 +19,9 @@ export const createBlog = async (data: {}, ID: string) => {
   }
 };
 
-export const verifyUser = async (data: {}, ID: string) => {
+export const viewAllBlogs = async () => {
   try {
-    return await axios.patch(`${URL}/verify-user/${ID}`, data).then((res) => {
+    return await axios.get(`${URL}/view-all-blogs`).then((res) => {
       return res.data;
     });
   } catch (error) {
@@ -30,31 +30,9 @@ export const verifyUser = async (data: {}, ID: string) => {
   }
 };
 
-export const viewUsers = async () => {
+export const viewUserBlog = async (ID: string) => {
   try {
-    return await axios.get(`${URL}/get-users`).then((res) => {
-      return res.data;
-    });
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
-};
-
-export const viewOneUser = async (ID: string) => {
-  try {
-    return await axios.get(`${URL}/get-one-user/${ID}`).then((res) => {
-      return res.data;
-    });
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
-};
-
-export const loginUser = async (ID: string) => {
-  try {
-    return await axios.get(`${URL}/login-user/${ID}`).then((res) => {
+    return await axios.get(`${URL}view-my-blogs/${ID}`).then((res) => {
       return res.data;
     });
   } catch (error) {

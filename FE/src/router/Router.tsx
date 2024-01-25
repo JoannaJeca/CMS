@@ -5,7 +5,8 @@ import Verify from "../pages/auth/Verify";
 import Login from "../pages/auth/Login";
 import AuthLayout from "../Layout/AuthLayout";
 import HomeScreen from "../pages/home/HomeScreen";
-import Blogs from "../pages/home/Blogs";
+import Blogs from "../pages/home/Blog/Blogs";
+import Quill from "../pages/home/Blog/Quill";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -39,5 +40,9 @@ export const mainRouter = createBrowserRouter([
         element: <Login />,
       },
     ],
+  },
+  {
+    path: "/blogs/write",
+    element: <Quill />,
   },
 ]);
