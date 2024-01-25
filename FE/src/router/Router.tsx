@@ -6,6 +6,8 @@ import Login from "../pages/auth/Login";
 import AuthLayout from "../Layout/AuthLayout";
 import HomeScreen from "../pages/home/HomeScreen";
 import Blogs from "../pages/home/Blogs";
+import Category from "../pages/home/Category";
+import MostRead from "../pages/home/MostRead";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ export const mainRouter = createBrowserRouter([
       {
         path: "blogs",
         element: <Blogs />,
+      },
+      {
+        path: "category",
+        element: <Category />,
+      },
+      {
+        path: "read",
+        element: <MostRead />,
       },
     ],
   },
