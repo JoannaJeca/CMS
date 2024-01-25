@@ -6,7 +6,9 @@ const Layout = () => {
   return (
     <div className="flex justify-center items-center">
       <SideBar />
-      <Outlet />
+      <div className="w-[80%]">
+        <Outlet />
+      </div>
     </div>
   );
 };
