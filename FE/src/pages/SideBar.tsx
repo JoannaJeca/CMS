@@ -3,6 +3,7 @@ import { FaBlog } from "react-icons/fa";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { MdHome } from "react-icons/md";
 import { CiRead } from "react-icons/ci";
+import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
   return (
@@ -15,18 +16,24 @@ const SideBar = () => {
           Jessica
         </div>
         <div className="w-[230px] h-[330px]  flex justify-around items-center flex-col mt-4 pt-2 ">
-          <nav className="w-[200px] h-[50px] rounded-[20px] border-slate-800 border-2 flex items-center font-bold my-2 mx-2 ">
+          <NavLink
+            to="/"
+            className="w-[200px] h-[50px] rounded-[20px] border-slate-800 border-2 flex items-center font-bold my-2 mx-2 hover:bg-slate-200 transition-all duration-300"
+          >
             <div className="w-[30px] h-[30px] flex justify-center items-center text-black font-bold text-[25px] mr-2 ml-4 border-slate-800 border-3 ">
               <MdHome />
             </div>
             Home
-          </nav>
-          <nav className="w-[200px] h-[50px] rounded-[20px] border-slate-800 border-2 flex items-center font-bold my-2 mx-2 ">
+          </NavLink>
+          <NavLink
+            to="/blogs"
+            className="w-[200px] h-[50px] rounded-[20px] border-slate-800 border-2 flex items-center font-bold my-2 mx-2 hover:bg-slate-200 transition-all duration-300"
+          >
             <div className="w-[30px] h-[30px] flex justify-center items-center text-black font-bold text-[25px] mr-2 ml-4 border-slate-800 border-3 ">
               <FaBlog />
             </div>
             Blogs
-          </nav>
+          </NavLink>
           <nav className="w-[200px] h-[50px] rounded-[20px] border-slate-800 border-2 flex  items-center font-bold my-2 mx-2 ">
             <div className="w-[30px] h-[30px] flex justify-center items-center text-black font-bold text-[25px] mr-2 ml-4 border-slate-800 border-3 ">
               <BiSolidCategoryAlt />
