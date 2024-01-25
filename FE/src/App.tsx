@@ -4,10 +4,9 @@ import { mainRouter } from "./router/Router";
 const App = () => {
   return (
     <div>
-      <RouterProvider router={mainRouter}/>
-  </div>
-)
-
+      <RouterProvider router={mainRouter} />
+    </div>
+  );
 };
 
 export default App;

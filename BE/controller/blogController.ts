@@ -6,14 +6,14 @@ import { Types } from "mongoose";
 
 export const createBlog = async (req: Request, res: Response) => {
   try {
-    const { title, content, category, displayImage, displayImageID } = req.body;
+    const { title, content, category } = req.body;
     const { userID } = req.params;
 
     const user = await userModel.findById(userID);
 
     const { secure_url, public_id }: any = await stream(req);
 
-    if (user) {
+    if (user && user.verified) {
       const blog = await blogModel.create({
         authorName: user.fullName,
         title,
@@ -30,6 +30,11 @@ export const createBlog = async (req: Request, res: Response) => {
         msg: "Blogs created",
         data: blog,
         status: 201,
+      });
+    } else {
+      return res.status(404).json({
+        msg: "Account not verified",
+        status: 404,
       });
     }
   } catch (error) {

@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import userModel from "../model/userModel";
 import bcrypt from "bcrypt";
+import { randomBytes } from "crypto";
+import jwt from "jsonwebtoken";
 
 export const createUser = async (
   req: Request,
@@ -12,10 +14,12 @@ export const createUser = async (
     const genSalt = await bcrypt.genSalt(10);
     const hashed = await bcrypt.hash(password, genSalt);
 
-    const user = await userModel.create({ email, password: hashed });
+    const token = randomBytes(3).toString("hex");
+
+    const user = await userModel.create({ email, password: hashed, token });
 
     return res.status(201).json({
-      msg: "Error creating user",
+      msg: "User created successfully",
       data: user,
       status: 201,
     });
@@ -72,11 +76,90 @@ export const viewOneUser = async (
     }
 
     return res.status(201).json({
-      msg: "Error creating user",
+      msg: "One user discovered",
       status: 201,
       count,
       data: user,
     });
+  } catch (error) {
+    return res.status(404).json({
+      msg: "Error creating user",
+      status: 404,
+    });
+  }
+};
+
+export const verifyUser = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const { userID } = req.params;
+    const { token } = req.body;
+
+    const user = await userModel.findById(userID);
+
+    if (user?.token === token) {
+      const updated = await userModel.findByIdAndUpdate(
+        user?._id,
+        { verified: true },
+        { new: true }
+      );
+
+      return res.status(201).json({
+        msg: "User verified",
+        status: 201,
+        data: updated,
+      });
+    } else {
+      return res.status(404).json({
+        msg: "Error creating user",
+        status: 404,
+      });
+    }
+  } catch (error) {
+    return res.status(404).json({
+      msg: "Error creating user",
+      status: 404,
+    });
+  }
+};
+
+export const loginUser = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const { userID } = req.params;
+    const { email, password } = req.body;
+
+    const user: any = await userModel.findById(userID);
+
+    const decrypt = await bcrypt.compare(password, user?.password);
+
+    if (user?.email === email) {
+      if (decrypt) {
+        const encrypted = jwt.sign({ id: user?._id }, "AJJE", {
+          expiresIn: "2d",
+        });
+
+        return res.status(201).json({
+          msg: "User verified",
+          status: 201,
+          data: encrypted,
+        });
+      } else {
+        return res.status(404).json({
+          msg: "Password incorrect",
+          status: 404,
+        });
+      }
+    } else {
+      return res.status(404).json({
+        msg: "Email incorrect",
+        status: 404,
+      });
+    }
   } catch (error) {
     return res.status(404).json({
       msg: "Error creating user",
