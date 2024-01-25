@@ -93,3 +93,25 @@ export const viewOneUserBlog = async (
     });
   }
 };
+
+export const viewOneBlog = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const { blogID } = req.params;
+
+    const blog = await blogModel.findById(blogID);
+
+    return res.status(201).json({
+      msg: "Finding users' blogs",
+      status: 200,
+      data: blog,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      msg: "Error creating user",
+      status: 404,
+    });
+  }
+};
