@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dbConfig = void 0;
 const mongoose_1 = require("mongoose");
-const URL = "mongodb://localhost:27017/blogDB";
+const URL = "mongodb+srv://abbeyrufai234:abbeyrufai234@cluster0.yokwex4.mongodb.net/?retryWrites=true&w=majority";
 const dbConfig = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         return yield (0, mongoose_1.connect)(URL).then(() => {

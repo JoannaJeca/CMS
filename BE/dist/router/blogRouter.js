@@ -11,4 +11,5 @@ const router = (0, express_1.Router)();
 router.route("/create-blog/:userID").post(upload, blogController_1.createBlog);
 router.route("/view-all-blogs").get(blogController_1.viewAllBlogs);
 router.route("/view-my-blogs/:userID").get(blogController_1.viewOneUserBlog);
+router.route("/view-one-blog/:blogID").get(blogController_1.viewOneBlog);
 exports.default = router;

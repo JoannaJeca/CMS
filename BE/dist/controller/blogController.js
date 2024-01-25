@@ -12,25 +12,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.viewOneUserBlog = exports.viewAllBlogs = exports.createBlog = void 0;
+exports.viewOneBlog = exports.viewOneUserBlog = exports.viewAllBlogs = exports.createBlog = void 0;
 const userModel_1 = __importDefault(require("../model/userModel"));
 const blogModel_1 = __importDefault(require("../model/blogModel"));
-const stream_1 = require("../utils/stream");
 const mongoose_1 = require("mongoose");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { title, content, category } = req.body;
         const { userID } = req.params;
         const user = yield userModel_1.default.findById(userID);
-        const { secure_url, public_id } = yield (0, stream_1.stream)(req);
+        // const { secure_url, public_id }: any = await stream(req);
         if (user && user.verified) {
             const blog = yield blogModel_1.default.create({
                 authorName: user.fullName,
                 title,
                 content,
                 category,
-                displayImage: secure_url,
-                displayImageID: public_id,
+                displayImage: "secure_url",
+                displayImageID: " public_id",
             });
             user.blogs.push(new mongoose_1.Types.ObjectId(blog._id));
             user.save();
@@ -97,3 +96,21 @@ const viewOneUserBlog = (req, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.viewOneUserBlog = viewOneUserBlog;
+const viewOneBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { blogID } = req.params;
+        const blog = yield blogModel_1.default.findById(blogID);
+        return res.status(201).json({
+            msg: "Finding users' blogs",
+            status: 200,
+            data: blog,
+        });
+    }
+    catch (error) {
+        return res.status(404).json({
+            msg: "Error creating user",
+            status: 404,
+        });
+    }
+});
+exports.viewOneBlog = viewOneBlog;

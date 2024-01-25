@@ -17,6 +17,7 @@ const userModel_1 = __importDefault(require("../model/userModel"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const crypto_1 = require("crypto");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const email_1 = require("../utils/email");
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password } = req.body;
@@ -24,6 +25,7 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const hashed = yield bcrypt_1.default.hash(password, genSalt);
         const token = (0, crypto_1.randomBytes)(3).toString("hex");
         const user = yield userModel_1.default.create({ email, password: hashed, token });
+        (0, email_1.verifiedEmail)(user);
         return res.status(201).json({
             msg: "User created successfully",
             data: user,
@@ -117,9 +119,8 @@ const verifyUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.verifyUser = verifyUser;
 const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userID } = req.params;
         const { email, password } = req.body;
-        const user = yield userModel_1.default.findById(userID);
+        const user = yield userModel_1.default.findOne({ email });
         const decrypt = yield bcrypt_1.default.compare(password, user === null || user === void 0 ? void 0 : user.password);
         if ((user === null || user === void 0 ? void 0 : user.email) === email) {
             if (decrypt) {
